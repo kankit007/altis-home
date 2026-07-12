@@ -1,0 +1,318 @@
+[
+  {
+    "id": "prop-1",
+    "project_name": "Altis Royal Crest Elite",
+    "developer_name": "Altis Homes Originals",
+    "is_altis_original": true,
+    "is_featured": true,
+    "rera_registration_number": "RERA-IN-BRK-998273",
+    "pricing": {
+      "starting_price_amount": 24000000,
+      "currency_code": "INR",
+      "display_formatted_price": "₹2.4 Crores Onwards"
+    },
+    "location_metadata": {
+      "state_region": "Jharkhand",
+      "city_hub": "Jamshedpur",
+      "micro_market_zone": "Luxury Zone Area",
+      "coordinates_point": { "latitude": 22.8214, "longitude": 86.2163 }
+    },
+    "inventory_parameters": {
+      "property_category": "Residential",
+      "sub_types_allowed": ["Apartment", "Penthouse"],
+      "bhk_configurations_available": [3, 4],
+      "possession_timeline_status": "Ready-to-Move"
+    },
+    "unique_selling_propositions": [
+      "5 minutes from key Metro terminal hubs",
+      "Individual dedicated elevators per penthouse layout",
+      "Integrated Solar arrays and 100% EV Charging stations",
+      "Floor-to-ceiling glass windows with panoramic view corridors",
+      "Private climate-controlled infinity deck"
+    ],
+    "media_assets_vault": {
+      "hero_slider_webp_urls": [
+        "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?auto=format&fit=crop&w=800&q=80"
+      ],
+      "virtual_tour_iframe_source": "https://matterport.com/discover/space/altisroyalcrestmock"
+    },
+    "amenities": ["Pool", "Gym", "Clubhouse", "EV Charging"],
+    "description": "Altis Royal Crest Elite defines premium luxury living in Jamshedpur. Featuring ultra-spacious layouts with private elevator lobbies, panoramic glass walls, and automated smart-home systems, this exclusive residential tower is designed for those who appreciate premium quality and maximum comfort. The property sets new standards for architectural grandeur and eco-friendly features with integrated solar energy systems.",
+    "carpet_area": "1,850 Sq. Ft.",
+    "connectivity": {
+      "transit": [
+        "Jamshedpur Railway Station: 8 mins (3.5 km)",
+        "Sonari Airport: 15 mins (6.2 km)",
+        "NH-33 Expressway Access: 3 mins (1.2 km)"
+      ],
+      "life_infrastructure": [
+        "XLRI Campus: 10 mins (4.1 km)",
+        "Tata Main Hospital: 12 mins (5.0 km)",
+        "Jubilee Park & Zoo: 6 mins (2.5 km)"
+      ]
+    }
+  },
+  {
+    "id": "prop-2",
+    "project_name": "Altis Sanctuary Villas",
+    "developer_name": "Altis Homes Originals",
+    "is_altis_original": true,
+    "is_featured": true,
+    "rera_registration_number": "RERA-IN-BRK-998810",
+    "pricing": {
+      "starting_price_amount": 45000000,
+      "currency_code": "INR",
+      "display_formatted_price": "₹4.5 Crores Onwards"
+    },
+    "location_metadata": {
+      "state_region": "Jharkhand",
+      "city_hub": "Jamshedpur",
+      "micro_market_zone": "Premium Core District",
+      "coordinates_point": { "latitude": 22.8091, "longitude": 86.1950 }
+    },
+    "inventory_parameters": {
+      "property_category": "Residential",
+      "sub_types_allowed": ["Villa"],
+      "bhk_configurations_available": [4],
+      "possession_timeline_status": "Under Construction"
+    },
+    "unique_selling_propositions": [
+      "Ultra-private premium double-height ceilings",
+      "Private swimming pool and landscaped courtyard",
+      "Designed by international award-winning architects",
+      "Eco-construction with rainwater harvesting and active filtration",
+      "Surrounded by lush reserve forest buffers"
+    ],
+    "media_assets_vault": {
+      "hero_slider_webp_urls": [
+        "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=800&q=80",
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80"
+      ],
+      "virtual_tour_iframe_source": "https://matterport.com/discover/space/altissanctuarymock"
+    },
+    "amenities": ["Pool", "Gym", "Clubhouse", "EV Charging"],
+    "description": "Altis Sanctuary Villas offer a peaceful escape from the hustle and bustle of city life, located in the prestigious Premium Core District. These limited-edition 4 BHK villas feature absolute privacy, massive private swimming pools, wrap-around gardens, and state-of-the-art home cinemas. A masterpiece of engineering, the villas combine luxury with smart design features and eco-friendly standards.",
+    "carpet_area": "3,200 Sq. Ft.",
+    "connectivity": {
+      "transit": [
+        "Marine Drive Ring Road: 5 mins (2.0 km)",
+        "Tatanagar Junction: 20 mins (9.0 km)",
+        "Proposed Metro Line (Phase 2): 2 mins walk"
+      ],
+      "life_infrastructure": [
+        "DPS Jamshedpur: 4 mins (1.8 km)",
+        "Tata Motors Plant: 18 mins (7.5 km)",
+        "Dalma Wildlife Sanctuary: 25 mins (12 km)"
+      ]
+    }
+  },
+  {
+    "id": "prop-3",
+    "project_name": "Green View Residency",
+    "developer_name": "Acme Infrastructure Corp",
+    "is_altis_original": false,
+    "is_featured": false,
+    "rera_registration_number": "RERA-EX-ACME-404555",
+    "pricing": {
+      "starting_price_amount": 8500000,
+      "currency_code": "INR",
+      "display_formatted_price": "₹85 Lakhs Onwards"
+    },
+    "location_metadata": {
+      "state_region": "Jharkhand",
+      "city_hub": "Jamshedpur",
+      "micro_market_zone": "Sector 45 Micro-Market Alpha",
+      "coordinates_point": { "latitude": 22.7958, "longitude": 86.2099 }
+    },
+    "inventory_parameters": {
+      "property_category": "Residential",
+      "sub_types_allowed": ["Apartment"],
+      "bhk_configurations_available": [2, 3],
+      "possession_timeline_status": "Within 1 Year"
+    },
+    "unique_selling_propositions": [
+      "Stunning views of the city skyline",
+      "75% open spaces with manicured gardens",
+      "Modern multi-tiered security systems",
+      "Equipped children's play area and running track"
+    ],
+    "media_assets_vault": {
+      "hero_slider_webp_urls": [
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=800&q=80"
+      ],
+      "virtual_tour_iframe_source": ""
+    },
+    "amenities": ["Pool", "Gym", "Clubhouse"],
+    "description": "Green View Residency by Acme Infrastructure offers highly functional and modern 2 & 3 BHK apartments. The project features gorgeous landscaped parks, a modern clubhouse, and round-the-clock power backup. Ideal for young families looking for affordable yet high-quality modern spaces near Jamshedpur's tech corridors.",
+    "carpet_area": "1,100 Sq. Ft.",
+    "connectivity": {
+      "transit": [
+        "Adityapur Industrial Area: 10 mins (4.5 km)",
+        "Gamharia Bus Stand: 7 mins (3.0 km)",
+        "NH-33 Toll Plaza: 12 mins (5.5 km)"
+      ],
+      "life_infrastructure": [
+        "Loyola School: 6 mins (2.4 km)",
+        "MGM Medical College: 15 mins (6.8 km)",
+        "City Centre Mall: 8 mins (3.5 km)"
+      ]
+    }
+  },
+  {
+    "id": "prop-4",
+    "project_name": "Metropolis Heights",
+    "developer_name": "Horizon Developers",
+    "is_altis_original": false,
+    "is_featured": false,
+    "rera_registration_number": "RERA-EX-HRZ-558231",
+    "pricing": {
+      "starting_price_amount": 6000000,
+      "currency_code": "INR",
+      "display_formatted_price": "₹60 Lakhs Onwards"
+    },
+    "location_metadata": {
+      "state_region": "Jharkhand",
+      "city_hub": "Jamshedpur",
+      "micro_market_zone": "Sector 62",
+      "coordinates_point": { "latitude": 22.8150, "longitude": 86.2300 }
+    },
+    "inventory_parameters": {
+      "property_category": "Residential",
+      "sub_types_allowed": ["Apartment", "Penthouse"],
+      "bhk_configurations_available": [1, 2],
+      "possession_timeline_status": "Ready-to-Move"
+    },
+    "unique_selling_propositions": [
+      "Close to major schools and medical care",
+      "Fully operational retail arcade on ground level",
+      "Rooftop jogging track and stargazing deck",
+      "Low maintenance architecture and smart layouts"
+    ],
+    "media_assets_vault": {
+      "hero_slider_webp_urls": [
+        "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80"
+      ],
+      "virtual_tour_iframe_source": ""
+    },
+    "amenities": ["Gym", "Clubhouse"],
+    "description": "Metropolis Heights stands tall in the heart of Sector 62. These smart 1 & 2 BHK ready-to-move apartments offer convenience and proximity to retail markets, Jamshedpur's best schools, and advanced medical centers. Designed with natural light and ventilation in mind, the layouts maximize usable carpet space.",
+    "carpet_area": "750 Sq. Ft.",
+    "connectivity": {
+      "transit": [
+        "Bistupur Market: 5 mins (2.0 km)",
+        "Jamshedpur Railway Station: 10 mins (4.0 km)",
+        "Auto-rickshaw Stand: 1 min walk"
+      ],
+      "life_infrastructure": [
+        "DAV Public School: 3 mins (1.2 km)",
+        "Tata Main Hospital: 8 mins (3.5 km)",
+        "Bistupur Retail Market: 5 mins (2.0 km)"
+      ]
+    }
+  },
+  {
+    "id": "prop-5",
+    "project_name": "Eco Valley Plots",
+    "developer_name": "Green Land Developers",
+    "is_altis_original": false,
+    "is_featured": false,
+    "rera_registration_number": "RERA-EX-GLD-882711",
+    "pricing": {
+      "starting_price_amount": 4000000,
+      "currency_code": "INR",
+      "display_formatted_price": "₹40 Lakhs Onwards"
+    },
+    "location_metadata": {
+      "state_region": "Jharkhand",
+      "city_hub": "Jamshedpur",
+      "micro_market_zone": "Sector 70",
+      "coordinates_point": { "latitude": 22.8400, "longitude": 86.2500 }
+    },
+    "inventory_parameters": {
+      "property_category": "Residential",
+      "sub_types_allowed": ["Plot"],
+      "bhk_configurations_available": [],
+      "possession_timeline_status": "Ready-to-Move"
+    },
+    "unique_selling_propositions": [
+      "Gated township layout with modular wide roads",
+      "Underground electricity cabling",
+      "Dedicated EV charging points at common spaces",
+      "100% clear legal title, bank approval ready"
+    ],
+    "media_assets_vault": {
+      "hero_slider_webp_urls": [
+        "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&w=800&q=80"
+      ],
+      "virtual_tour_iframe_source": ""
+    },
+    "amenities": ["EV Charging"],
+    "description": "Eco Valley Plots offer the rare chance to buy land in a beautifully planned, green development in Sector 70. These gated residential plots range from 1,200 to 2,400 sq. ft. and come with modern civic infrastructure like underground cable lines, modular wide concrete roads, continuous water supply, and electric vehicle charging spots.",
+    "carpet_area": "1,200 - 2,400 Sq. Ft.",
+    "connectivity": {
+      "transit": [
+        "Dimna Lake Road: 8 mins (3.6 km)",
+        "Potka Railway Halt: 15 mins (7.0 km)",
+        "NH-33 Exit Ramp: 6 mins (2.5 km)"
+      ],
+      "life_infrastructure": [
+        "Kendriya Vidyalaya: 12 mins (5.2 km)",
+        "Telco Hospital: 20 mins (9.0 km)",
+        "Dimna Lake Recreational Zone: 5 mins (2.0 km)"
+      ]
+    }
+  },
+  {
+    "id": "prop-6",
+    "project_name": "Corporate Plaza Offices",
+    "developer_name": "Acme Infrastructure Corp",
+    "is_altis_original": false,
+    "is_featured": false,
+    "rera_registration_number": "RERA-EX-ACME-902341",
+    "pricing": {
+      "starting_price_amount": 12000000,
+      "currency_code": "INR",
+      "display_formatted_price": "₹1.2 Crores Onwards"
+    },
+    "location_metadata": {
+      "state_region": "Jharkhand",
+      "city_hub": "Jamshedpur",
+      "micro_market_zone": "Sector 62",
+      "coordinates_point": { "latitude": 22.8145, "longitude": 86.2295 }
+    },
+    "inventory_parameters": {
+      "property_category": "Commercial",
+      "sub_types_allowed": ["Office Space", "Retail Shop"],
+      "bhk_configurations_available": [],
+      "possession_timeline_status": "Within 1 Year"
+    },
+    "unique_selling_propositions": [
+      "Excellent commercial visibility with direct highway access",
+      "Double-glazed glass frontage for lower heat loads",
+      "Centralized HVAC and high-speed elevator banks",
+      "Ample basement vehicle parking capacity"
+    ],
+    "media_assets_vault": {
+      "hero_slider_webp_urls": [
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=800&q=80"
+      ],
+      "virtual_tour_iframe_source": ""
+    },
+    "amenities": ["EV Charging", "Clubhouse"],
+    "description": "Corporate Plaza Offices represents Jamshedpur's next commercial landmark. Ideal for retail stores, corporate offices, and consulting firms, the building integrates energy-efficient design, continuous high-security oversight, backup diesel generation, EV charging infrastructure, and a modern rooftop corporate cafeteria.",
+    "carpet_area": "900 - 5,000 Sq. Ft.",
+    "connectivity": {
+      "transit": [
+        "Bistupur Flyover: 2 mins (0.8 km)",
+        "Jamshedpur Railway Station: 8 mins (3.2 km)",
+        "Kandra Highway Junction: 18 mins (8.0 km)"
+      ],
+      "life_infrastructure": [
+        "SBI Regional Office: 3 mins (1.0 km)",
+        "Tata Steel Plant Gate: 10 mins (4.5 km)",
+        "Sakchi Market Hub: 6 mins (2.5 km)"
+      ]
+    }
+  }
+]

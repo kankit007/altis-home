@@ -1,0 +1,36 @@
+[
+  {
+    "id": "lead-1",
+    "timestamp": "2026-07-11 14:22:10",
+    "name": "Ankit Kumar",
+    "phone": "+91 98765 43210",
+    "email": "ankit.k@ebay.com",
+    "source": "Brochure Gated Form: Altis Royal Crest Elite",
+    "status": "New",
+    "details": {}
+  },
+  {
+    "id": "lead-2",
+    "timestamp": "2026-07-11 11:05:42",
+    "name": "Mukul Kumar",
+    "phone": "+91 87654 32109",
+    "email": "mukul.k@domain.com",
+    "source": "Site Visit Scheduler Widget: Altis Sanctuary Villas",
+    "status": "Site Visit Scheduled",
+    "details": {
+      "preferred_date": "2026-07-15",
+      "time_slot": "Afternoon",
+      "transport_assistance": true
+    }
+  },
+  {
+    "id": "lead-3",
+    "timestamp": "2026-07-10 18:44:19",
+    "name": "Megha Sharma",
+    "phone": "+91 76543 21098",
+    "email": "megha.s@domain.com",
+    "source": "Price Sheet CTA Modal: Green View Residency",
+    "status": "Contacted",
+    "details": {}
+  }
+]

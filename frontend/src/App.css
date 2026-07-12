@@ -1,0 +1,79 @@
+/* Card overrides to ensure solid colors, high contrast and simple grids */
+.properties-grid > div {
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Featured / Altis Original cards: solid red border with white background */
+.properties-grid > div[style*="rgba(8, 24, 18"] {
+  background: #ffffff !important;
+  border: 2px solid #dc2626 !important; /* Solid Red Border */
+  box-shadow: 0 4px 12px rgba(220, 38, 38, 0.08) !important;
+}
+
+.properties-grid > div:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.property-card-image {
+  transition: transform 0.3s ease !important;
+}
+
+.properties-grid > div:hover .property-card-image {
+  transform: scale(1.02) !important;
+}
+
+/* Details modal layout fixes */
+.modal-content {
+  border-radius: 12px !important;
+  background: #ffffff !important;
+  color: #0f172a !important;
+  border: 1px solid #cbd5e1 !important;
+}
+
+/* Table styles */
+table {
+  border-collapse: separate;
+  border-spacing: 0 8px;
+}
+
+table tr {
+  background: #ffffff;
+  transition: all 0.2s ease;
+}
+
+table tbody tr:hover {
+  background: #f1f5f9;
+}
+
+table th, table td {
+  border: none;
+}
+
+table th {
+  font-family: var(--font-heading);
+  text-transform: uppercase;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--text-secondary);
+}
+
+table td {
+  padding: 16px 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+table tr td:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+table tr td:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
