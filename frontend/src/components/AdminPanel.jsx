@@ -208,29 +208,68 @@ const AdminPanel = ({
                 </div>
 
                 <div className="form-group">
-                  <label className="form-label">Starting Price Display (e.g. ₹85 Lakhs Onwards)</label>
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    value={crudForm.pricing?.display_formatted_price || ''}
-                    onChange={(e) => setCrudForm({ 
-                      ...crudForm, 
-                      pricing: { ...crudForm.pricing, display_formatted_price: e.target.value } 
-                    })}
-                  />
-                </div>
-
-                <div className="form-group">
                   <label className="form-label">Starting Price Amount (Numeric, e.g. 8500000)</label>
                   <input 
                     type="number" 
                     className="form-input" 
                     value={crudForm.pricing?.starting_price_amount || 0}
-                    onChange={(e) => setCrudForm({ 
-                      ...crudForm, 
-                      pricing: { ...crudForm.pricing, starting_price_amount: Number(e.target.value) } 
-                    })}
+                    onChange={(e) => {
+                      const amount = Number(e.target.value);
+                      const isOnwards = crudForm.pricing?.display_formatted_price?.includes('Onwards') || false;
+                      let formatted = '';
+                      if (amount >= 10000000) {
+                        formatted = `₹${(amount / 10000000).toFixed(amount % 10000000 === 0 ? 0 : 1)} Crores`;
+                      } else if (amount >= 100000) {
+                        formatted = `₹${(amount / 100000).toFixed(amount % 100000 === 0 ? 0 : 1)} Lakhs`;
+                      } else if (amount > 0) {
+                        formatted = `₹${amount.toLocaleString('en-IN')}`;
+                      }
+                      if (formatted && isOnwards) formatted += ' Onwards';
+                      setCrudForm({ 
+                        ...crudForm, 
+                        pricing: { 
+                          ...crudForm.pricing, 
+                          starting_price_amount: amount,
+                          display_formatted_price: formatted
+                        } 
+                      });
+                    }}
                   />
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Display Price Preview</label>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+                    <input 
+                      type="text" 
+                      className="form-input" 
+                      value={crudForm.pricing?.display_formatted_price || ''}
+                      onChange={(e) => setCrudForm({ 
+                        ...crudForm, 
+                        pricing: { ...crudForm.pricing, display_formatted_price: e.target.value } 
+                      })}
+                      style={{ flex: 1 }}
+                    />
+                    <label style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: 'var(--text-secondary)', cursor: 'pointer', whiteSpace: 'nowrap' }}>
+                      <input 
+                        type="checkbox"
+                        checked={crudForm.pricing?.display_formatted_price?.includes('Onwards') || false}
+                        onChange={(e) => {
+                          let current = crudForm.pricing?.display_formatted_price || '';
+                          if (e.target.checked) {
+                            if (!current.includes('Onwards')) current = current.replace(/\s*$/, '') + ' Onwards';
+                          } else {
+                            current = current.replace(/\s*Onwards\s*$/, '');
+                          }
+                          setCrudForm({
+                            ...crudForm,
+                            pricing: { ...crudForm.pricing, display_formatted_price: current }
+                          });
+                        }}
+                      />
+                      Onwards
+                    </label>
+                  </div>
                 </div>
 
                 <div className="form-group">
@@ -242,6 +281,48 @@ const AdminPanel = ({
                     onChange={(e) => setCrudForm({ 
                       ...crudForm, 
                       location_metadata: { ...crudForm.location_metadata, micro_market_zone: e.target.value } 
+                    })}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Geo Coordinates (Latitude)</label>
+                  <input 
+                    type="number" 
+                    step="any"
+                    className="form-input" 
+                    placeholder="e.g. 28.6139"
+                    value={crudForm.location_metadata?.coordinates_point?.latitude || ''}
+                    onChange={(e) => setCrudForm({ 
+                      ...crudForm, 
+                      location_metadata: { 
+                        ...crudForm.location_metadata, 
+                        coordinates_point: { 
+                          ...crudForm.location_metadata?.coordinates_point, 
+                          latitude: e.target.value ? Number(e.target.value) : '' 
+                        } 
+                      } 
+                    })}
+                  />
+                </div>
+
+                <div className="form-group">
+                  <label className="form-label">Geo Coordinates (Longitude)</label>
+                  <input 
+                    type="number" 
+                    step="any"
+                    className="form-input" 
+                    placeholder="e.g. 77.2090"
+                    value={crudForm.location_metadata?.coordinates_point?.longitude || ''}
+                    onChange={(e) => setCrudForm({ 
+                      ...crudForm, 
+                      location_metadata: { 
+                        ...crudForm.location_metadata, 
+                        coordinates_point: { 
+                          ...crudForm.location_metadata?.coordinates_point, 
+                          longitude: e.target.value ? Number(e.target.value) : '' 
+                        } 
+                      } 
                     })}
                   />
                 </div>
@@ -416,8 +497,8 @@ const AdminPanel = ({
                     onChange={async (e) => {
                       const file = e.target.files?.[0];
                       if (!file) return;
-                      if (file.size > 5 * 1024 * 1024) {
-                        alert('Blueprint image file size exceeds the limit. Images must be under 5 MB.');
+                      if (file.size > 2 * 1024 * 1024) {
+                        alert('Blueprint image file size exceeds the limit. Images must be under 2 MB.');
                         e.target.value = '';
                         return;
                       }
@@ -517,13 +598,13 @@ function ImageUploadSection({ crudForm, setCrudForm }) {
     setUploading(true);
     setUploadError('');
 
-    // Check size limit: Image (5 MB) vs Video (20 MB)
+    // Check size limit: Image (2 MB) vs Video (7 MB)
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
       const isVideo = file.type.startsWith('video/');
-      const limit = isVideo ? 20 * 1024 * 1024 : 5 * 1024 * 1024;
+      const limit = isVideo ? 7 * 1024 * 1024 : 2 * 1024 * 1024;
       if (file.size > limit) {
-        setUploadError(`File "${file.name}" exceeds the size limit. Images must be under 5 MB, and videos must be under 20 MB.`);
+        setUploadError(`File "${file.name}" exceeds the size limit. Images must be under 2 MB, and videos must be under 7 MB.`);
         setUploading(false);
         if (fileInputRef.current) fileInputRef.current.value = '';
         return;
@@ -698,7 +779,7 @@ function ImageUploadSection({ crudForm, setCrudForm }) {
               <strong>Click to browse</strong> or drag and drop images/videos here
             </p>
             <p style={{ margin: '4px 0 0', fontSize: '11px', color: 'var(--text-muted)' }}>
-              Images (max 5 MB), Videos (max 20 MB) — Up to 10 items
+              Images (max 2 MB), Videos (max 7 MB) — Up to 10 items
             </p>
           </div>
         )}

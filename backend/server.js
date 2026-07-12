@@ -25,6 +25,27 @@ app.use(cors({
 }));
 app.use(express.json());
 
+// Custom request logging middleware for all CRUD operations
+app.use((req, res, next) => {
+  const timestamp = new Date().toISOString();
+  const start = Date.now();
+  
+  res.on('finish', () => {
+    const duration = Date.now() - start;
+    console.log(`[${timestamp}] ${req.method} ${req.originalUrl} -> Status: ${res.statusCode} (${duration}ms)`);
+    
+    // Log the request body for modifications (POST/PUT/PATCH) for transparency
+    if (['POST', 'PUT', 'PATCH'].includes(req.method) && req.body && Object.keys(req.body).length > 0) {
+      // Create a shallow copy to prevent console bloating if there are extremely large properties
+      const bodyCopy = { ...req.body };
+      if (bodyCopy.password) bodyCopy.password = '******'; // Hide sensitive fields
+      console.log(`   └─ Request Body:`, JSON.stringify(bodyCopy));
+    }
+  });
+  
+  next();
+});
+
 // Routes
 const propertyRoutes = require('./routes/propertyRoutes');
 const leadRoutes = require('./routes/leadRoutes');

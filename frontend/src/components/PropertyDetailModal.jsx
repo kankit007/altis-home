@@ -296,13 +296,19 @@ const PropertyDetailModal = ({ property, onClose, onOpenGatedForm, onOpenVisitFo
                 
                 {/* Dynamic Google Map Embed */}
                 {(() => {
-                  const queryParts = [
-                    property.project_name,
-                    property.location_metadata?.micro_market_zone,
-                    property.location_metadata?.city_hub,
-                    property.location_metadata?.state_region
-                  ].filter(Boolean);
-                  const mapQuery = encodeURIComponent(queryParts.join(', '));
+                  const coords = property.location_metadata?.coordinates_point;
+                  let mapSrc;
+                  if (coords?.latitude && coords?.longitude) {
+                    mapSrc = `https://maps.google.com/maps?q=${coords.latitude},${coords.longitude}&t=&z=15&ie=UTF8&iwloc=&output=embed`;
+                  } else {
+                    const queryParts = [
+                      property.project_name,
+                      property.location_metadata?.micro_market_zone,
+                      property.location_metadata?.city_hub,
+                      property.location_metadata?.state_region
+                    ].filter(Boolean);
+                    mapSrc = `https://maps.google.com/maps?q=${encodeURIComponent(queryParts.join(', '))}&t=&z=14&ie=UTF8&iwloc=&output=embed`;
+                  }
                   return (
                     <div style={{ height: '220px', border: '1px solid #cbd5e1', borderRadius: '8px', overflow: 'hidden', marginBottom: '12px' }}>
                       <iframe
@@ -313,7 +319,7 @@ const PropertyDetailModal = ({ property, onClose, onOpenGatedForm, onOpenVisitFo
                         loading="lazy"
                         allowFullScreen
                         referrerPolicy="no-referrer-when-downgrade"
-                        src={`https://maps.google.com/maps?q=${mapQuery}&t=&z=14&ie=UTF8&iwloc=&output=embed`}
+                        src={mapSrc}
                       />
                     </div>
                   );

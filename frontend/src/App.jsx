@@ -27,7 +27,7 @@ function App() {
   const [compareList, setCompareList] = useState([]);
   const [activeTab, setActiveTab] = useState('search'); // 'search', 'favorites', 'admin'
   const [selectedProperty, setSelectedProperty] = useState(null);
-  
+
   // Search state variables
   const [searchText, setSearchText] = useState('');
   const [selectedLocations, setSelectedLocations] = useState([]);
@@ -38,19 +38,19 @@ function App() {
   const [possessionTimeline, setPossessionTimeline] = useState('');
   const [selectedBhks, setSelectedBhks] = useState([]);
   const [selectedAmenities, setSelectedAmenities] = useState([]);
-  
+
   // Modals state
   const [gatedModalOpen, setGatedModalOpen] = useState(false);
   const [gatedSource, setGatedSource] = useState('');
   const [visitModalOpen, setVisitModalOpen] = useState(false);
   const [visitSource, setVisitSource] = useState('');
-  
+
   // Form input states
   const [leadFormData, setLeadFormData] = useState({ name: '', phone: '', email: '' });
   const [visitFormData, setVisitFormData] = useState({ date: '', timeSlot: 'Afternoon', transport: true });
   const [gatedDownloadUnlocked, setGatedDownloadUnlocked] = useState(false);
   const [leadSubmitSuccess, setLeadSubmitSuccess] = useState(false);
-  
+
   // Admin & CRUD dashboards
   const [adminLoggedIn, setAdminLoggedIn] = useState(false);
   const [adminPasscode, setAdminPasscode] = useState('');
@@ -74,7 +74,7 @@ function App() {
     carpet_area: '',
     connectivity: { transit: [], life_infrastructure: [] }
   });
-  
+
   // Client decision drawer trigger
   const [calculatorsOpen, setCalculatorsOpen] = useState(false);
 
@@ -112,14 +112,14 @@ function App() {
   useEffect(() => {
     fetchProperties();
   }, [
-    searchText, selectedLocations, selectedTypes, minPrice, maxPrice, 
+    searchText, selectedLocations, selectedTypes, minPrice, maxPrice,
     selectedBuilder, possessionTimeline, selectedBhks, selectedAmenities
   ]);
-  
+
   useEffect(() => {
     localStorage.setItem('altis_favorites', JSON.stringify(favorites));
   }, [favorites]);
-  
+
   useEffect(() => {
     if (adminLoggedIn) {
       fetchAdminLeads();
@@ -280,8 +280,8 @@ function App() {
       location_metadata: { state_region: 'Jharkhand', city_hub: 'Jamshedpur', micro_market_zone: 'Sector 62', coordinates_point: { latitude: 22.8, longitude: 86.2 } },
       inventory_parameters: { property_category: 'Residential', sub_types_allowed: ['Apartment'], bhk_configurations_available: [2, 3], possession_timeline_status: 'Within 1 Year' },
       unique_selling_propositions: ['Premium location', 'Excellent modular structure'],
-      media_assets_vault: { 
-        hero_slider_webp_urls: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80'], 
+      media_assets_vault: {
+        hero_slider_webp_urls: ['https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=800&q=80'],
         virtual_tour_iframe_source: '',
         master_plan_url: ''
       },
@@ -398,12 +398,12 @@ function App() {
       </header>
 
       <main className="container" style={{ paddingBottom: '100px', marginTop: '30px' }}>
-        
+
         {/* Banner Section */}
         {activeTab === 'search' && (
           <div className="glass-panel" style={{ padding: '36px', marginBottom: '30px', textAlign: 'center', background: '#f1f5f9', border: '1px solid #cbd5e1' }}>
             <h1 style={{ fontSize: '42px', margin: '0 0 10px 0', background: 'var(--gold-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              Find Your Premium Living Space
+              Find Your Dream Home
             </h1>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto 20px auto', fontSize: '15px' }}>
               Explore the exclusive "Altis Homes Originals" built directly by our group alongside hand-picked premium brokerage developments matching highest quality specifications.
@@ -423,15 +423,15 @@ function App() {
               <h3 style={{ margin: '0 0 16px 0', color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <SearchIcon /> Dynamic Search Engine
               </h3>
-              
+
               {/* Search Bar Row */}
               <div style={{ display: 'grid', gridTemplateColumns: '1fr auto', gap: '12px', marginBottom: '20px' }}>
-                <input 
-                  type="text" 
-                  className="form-input" 
-                  placeholder="Search project name, key amenities, developer, or location..." 
-                  value={searchText} 
-                  onChange={(e) => setSearchText(e.target.value)} 
+                <input
+                  type="text"
+                  className="form-input"
+                  placeholder="Search project name, key amenities, developer, or location..."
+                  value={searchText}
+                  onChange={(e) => setSearchText(e.target.value)}
                   style={{ height: '48px', fontSize: '15px' }}
                 />
                 <button className="btn btn-primary" onClick={fetchProperties}>Search</button>
@@ -439,7 +439,7 @@ function App() {
 
               {/* Filters Form Blocks */}
               <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
-                
+
                 {/* 1. Location Selection */}
                 <div>
                   <label className="form-label">Location (Multi-select)</label>
@@ -487,9 +487,9 @@ function App() {
                       <option value="100000000">₹10 Crores</option>
                     </select>
                   </div>
-                  
+
                   <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>
-                    Range: {minPrice ? `₹${minPrice/100000}L` : '0'} to {maxPrice ? `₹${maxPrice/10000000}Cr` : 'Unlimited'}
+                    Range: {minPrice ? `₹${minPrice / 100000}L` : '0'} to {maxPrice ? `₹${maxPrice / 10000000}Cr` : 'Unlimited'}
                   </span>
                 </div>
 
@@ -534,13 +534,13 @@ function App() {
                     {[1, 2, 3, 4].map(bhkNum => {
                       const isSelected = selectedBhks.includes(bhkNum);
                       return (
-                        <button 
-                          key={bhkNum} 
-                          className="btn" 
+                        <button
+                          key={bhkNum}
+                          className="btn"
                           onClick={() => handleBhkToggle(bhkNum)}
-                          style={{ 
-                            flex: 1, 
-                            padding: '8px', 
+                          style={{
+                            flex: 1,
+                            padding: '8px',
                             background: isSelected ? 'var(--primary)' : 'rgba(0,0,0,0.02)',
                             color: isSelected ? '#ffffff' : 'var(--text-primary)',
                             border: '1px solid ' + (isSelected ? 'transparent' : 'var(--border-glass)')
@@ -559,7 +559,7 @@ function App() {
                     {availableAmenities.map(amen => {
                       const isSelected = selectedAmenities.includes(amen);
                       return (
-                        <button 
+                        <button
                           key={amen}
                           className="btn"
                           onClick={() => handleAmenityToggle(amen)}
@@ -631,7 +631,7 @@ function App() {
                   <h4 style={{ color: 'var(--primary)', margin: 0 }}>Compare Engine Matrix ({compareList.length} of 3 selected)</h4>
                   <button className="btn btn-secondary" style={{ padding: '4px 12px', fontSize: '12px' }} onClick={() => setCompareList([])}>Clear Comparison</button>
                 </div>
-                
+
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '16px' }}>
                   {compareList.map(item => (
                     <div key={item.id} className="glass-panel" style={{ padding: '10px', display: 'flex', alignItems: 'center', gap: '10px', background: '#ffffff' }}>
@@ -643,7 +643,7 @@ function App() {
                       <button style={{ background: 'none', border: 'none', color: 'var(--text-muted)', cursor: 'pointer' }} onClick={() => toggleCompare(item)}>✕</button>
                     </div>
                   ))}
-                  
+
                   <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
                     <a href="#comparison-matrix" className="btn btn-primary" style={{ padding: '8px 16px', width: '100%', textDecoration: 'none' }}>
                       Analyze Side-by-Side Matrix
@@ -664,34 +664,34 @@ function App() {
                 const isCompared = compareList.some(item => item.id === property.id);
 
                 return (
-                  <div 
-                    key={property.id} 
-                    className="glass-panel" 
-                    style={{ 
-                      overflow: 'hidden', 
-                      display: 'flex', 
-                      flexDirection: 'column', 
+                  <div
+                    key={property.id}
+                    className="glass-panel"
+                    style={{
+                      overflow: 'hidden',
+                      display: 'flex',
+                      flexDirection: 'column',
                       position: 'relative',
                       background: isOriginal ? 'rgba(8, 24, 18, 0.5)' : 'var(--bg-glass)',
                       border: isOriginal ? '2px solid var(--primary)' : '1px solid var(--border-glass)',
                       boxShadow: isOriginal ? '0 8px 32px 0 rgba(16, 185, 129, 0.1)' : 'var(--glass-shadow)'
                     }}
                   >
-                    <button 
-                      onClick={() => toggleFavorite(property.id)} 
+                    <button
+                      onClick={() => toggleFavorite(property.id)}
                       style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 10, background: 'rgba(255,255,255,0.7)', border: 'none', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
                     >
                       <HeartIcon filled={isFav} />
                     </button>
 
                     <div style={{ overflow: 'hidden', height: '200px', position: 'relative' }}>
-                      <img 
-                        src={property.media_assets_vault?.hero_slider_webp_urls?.[0]} 
-                        alt={property.project_name} 
+                      <img
+                        src={property.media_assets_vault?.hero_slider_webp_urls?.[0]}
+                        alt={property.project_name}
                         style={{ width: '100%', height: '100%', objectFit: 'cover' }}
                         className="property-card-image"
                       />
-                      
+
                       <div style={{ position: 'absolute', bottom: '12px', left: '12px', display: 'flex', gap: '6px' }}>
                         {isOriginal ? (
                           <span className="badge badge-gold">★ Altis Original Exclusive</span>
@@ -709,7 +709,7 @@ function App() {
                           {property.pricing?.display_formatted_price.replace(' Onwards', '')}
                         </span>
                       </div>
-                      
+
                       <p style={{ fontSize: '13px', color: 'var(--text-secondary)', display: 'flex', alignItems: 'center', gap: '4px', marginBottom: '12px' }}>
                         📍 {property.location_metadata?.micro_market_zone}, {property.location_metadata?.city_hub}
                       </p>
@@ -731,9 +731,9 @@ function App() {
                           <input type="checkbox" checked={isCompared} onChange={() => toggleCompare(property)} />
                           Add to Compare
                         </label>
-                        
-                        <button 
-                          className="btn btn-secondary" 
+
+                        <button
+                          className="btn btn-secondary"
                           style={{ padding: '6px 14px', fontSize: '12px', background: isOriginal ? 'rgba(220, 38, 38, 0.08)' : 'rgba(255,255,255,0.05)', borderColor: isOriginal ? 'var(--primary)' : 'var(--border-glass)' }}
                           onClick={() => handleViewDetails(property)}
                         >
@@ -778,19 +778,19 @@ function App() {
                     const isCompared = compareList.some(item => item.id === property.id);
 
                     return (
-                      <div 
-                        key={property.id} 
-                        className="glass-panel" 
-                        style={{ 
-                          overflow: 'hidden', 
-                          display: 'flex', 
-                          flexDirection: 'column', 
+                      <div
+                        key={property.id}
+                        className="glass-panel"
+                        style={{
+                          overflow: 'hidden',
+                          display: 'flex',
+                          flexDirection: 'column',
                           position: 'relative',
                           border: isOriginal ? '2px solid var(--primary)' : '1px solid var(--border-glass)'
                         }}
                       >
-                        <button 
-                          onClick={() => toggleFavorite(property.id)} 
+                        <button
+                          onClick={() => toggleFavorite(property.id)}
                           style={{ position: 'absolute', top: '12px', right: '12px', zIndex: 10, background: 'rgba(255,255,255,0.7)', border: 'none', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}
                         >
                           <HeartIcon filled={isFav} />
@@ -805,7 +805,7 @@ function App() {
                             <h4 style={{ margin: 0 }}>{property.project_name}</h4>
                             <span style={{ color: 'var(--primary)', fontWeight: 'bold' }}>{property.pricing?.display_formatted_price}</span>
                           </div>
-                          
+
                           <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '12px' }}>
                             📍 {property.location_metadata?.micro_market_zone}, {property.location_metadata?.city_hub}
                           </p>
@@ -819,7 +819,7 @@ function App() {
                               <input type="checkbox" checked={isCompared} onChange={() => toggleCompare(property)} />
                               Compare
                             </label>
-                            
+
                             <button className="btn btn-secondary" style={{ padding: '6px 14px', fontSize: '12px' }} onClick={() => handleViewDetails(property)}>
                               View Details
                             </button>
@@ -862,7 +862,7 @@ function App() {
             <h3 style={{ color: 'var(--primary)', marginBottom: '16px' }}>
               ⚖️ side-by-side comparison comparative matrix
             </h3>
-            
+
             <div style={{ overflowX: 'auto' }}>
               <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: '14px' }}>
                 <thead>
@@ -940,9 +940,9 @@ function App() {
       <Calculators isOpen={calculatorsOpen} onClose={() => setCalculatorsOpen(false)} />
 
       {/* 7. PROJECT DETAILS MODAL OVERVIEW */}
-      <PropertyDetailModal 
-        property={selectedProperty} 
-        onClose={() => setSelectedProperty(null)} 
+      <PropertyDetailModal
+        property={selectedProperty}
+        onClose={() => setSelectedProperty(null)}
         onOpenGatedForm={(src) => {
           setGatedSource(src);
           setLeadSubmitSuccess(false);
@@ -961,7 +961,7 @@ function App() {
         <div className="modal-overlay" onClick={() => setGatedModalOpen(false)}>
           <div className="glass-panel modal-content" onClick={(e) => e.stopPropagation()} style={{ border: '2px solid var(--primary)' }}>
             <button className="modal-close" onClick={() => setGatedModalOpen(false)}>✕</button>
-            
+
             <h3 style={{ color: 'var(--primary)', fontSize: '20px', marginBottom: '12px', textAlign: 'center' }}>
               🔑 Unlock Premium Project Resources
             </h3>
@@ -974,9 +974,9 @@ function App() {
                 <span style={{ fontSize: '48px' }}>🔓</span>
                 <h4 style={{ color: '#dc2626', margin: '12px 0 8px 0' }}>Asset Verification Successful</h4>
                 <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '20px' }}>Your download connection link has been successfully authorized.</p>
-                <a 
-                  href="#" 
-                  className="btn btn-primary" 
+                <a
+                  href="#"
+                  className="btn btn-primary"
                   style={{ width: '100%', textDecoration: 'none' }}
                   onClick={(e) => {
                     e.preventDefault();
@@ -991,10 +991,10 @@ function App() {
               <form onSubmit={handleLeadSubmit}>
                 <div className="form-group">
                   <label className="form-label">Full Name</label>
-                  <input 
-                    type="text" 
-                    className="form-input" 
-                    placeholder="e.g. Ankit Kumar" 
+                  <input
+                    type="text"
+                    className="form-input"
+                    placeholder="e.g. Ankit Kumar"
                     required
                     value={leadFormData.name}
                     onChange={(e) => setLeadFormData({ ...leadFormData, name: e.target.value })}
@@ -1003,10 +1003,10 @@ function App() {
 
                 <div className="form-group">
                   <label className="form-label">Mobile Contact Number</label>
-                  <input 
-                    type="tel" 
-                    className="form-input" 
-                    placeholder="+91 | e.g. 98765 43210" 
+                  <input
+                    type="tel"
+                    className="form-input"
+                    placeholder="+91 | e.g. 98765 43210"
                     required
                     value={leadFormData.phone}
                     onChange={(e) => setLeadFormData({ ...leadFormData, phone: e.target.value })}
@@ -1015,10 +1015,10 @@ function App() {
 
                 <div className="form-group">
                   <label className="form-label">Email Routing Address</label>
-                  <input 
-                    type="email" 
-                    className="form-input" 
-                    placeholder="e.g. yourname@domain.com" 
+                  <input
+                    type="email"
+                    className="form-input"
+                    placeholder="e.g. yourname@domain.com"
                     required
                     value={leadFormData.email}
                     onChange={(e) => setLeadFormData({ ...leadFormData, email: e.target.value })}
@@ -1043,7 +1043,7 @@ function App() {
         <div className="modal-overlay" onClick={() => setVisitModalOpen(false)}>
           <div className="glass-panel modal-content" onClick={(e) => e.stopPropagation()}>
             <button className="modal-close" onClick={() => setVisitModalOpen(false)}>✕</button>
-            
+
             <h3 style={{ color: 'var(--primary)', fontSize: '20px', marginBottom: '8px', textAlign: 'center' }}>
               🚗 Coordinate Physical Guided Site Tour
             </h3>
@@ -1065,21 +1065,21 @@ function App() {
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
                   <div className="form-group">
                     <label className="form-label">Full Name</label>
-                    <input 
-                      type="text" 
-                      className="form-input" 
-                      placeholder="Name" 
-                      required 
+                    <input
+                      type="text"
+                      className="form-input"
+                      placeholder="Name"
+                      required
                       value={leadFormData.name}
                       onChange={(e) => setLeadFormData({ ...leadFormData, name: e.target.value })}
                     />
                   </div>
                   <div className="form-group">
                     <label className="form-label">Mobile Number</label>
-                    <input 
-                      type="tel" 
-                      className="form-input" 
-                      placeholder="Phone" 
+                    <input
+                      type="tel"
+                      className="form-input"
+                      placeholder="Phone"
                       required
                       value={leadFormData.phone}
                       onChange={(e) => setLeadFormData({ ...leadFormData, phone: e.target.value })}
@@ -1089,10 +1089,10 @@ function App() {
 
                 <div className="form-group">
                   <label className="form-label">Email</label>
-                  <input 
-                    type="email" 
-                    className="form-input" 
-                    placeholder="Email Address" 
+                  <input
+                    type="email"
+                    className="form-input"
+                    placeholder="Email Address"
                     required
                     value={leadFormData.email}
                     onChange={(e) => setLeadFormData({ ...leadFormData, email: e.target.value })}
@@ -1102,9 +1102,9 @@ function App() {
                 <div style={{ borderTop: '1px solid var(--border-glass)', marginTop: '16px', paddingTop: '16px' }}>
                   <div className="form-group">
                     <label className="form-label">Select Booking Date</label>
-                    <input 
-                      type="date" 
-                      className="form-input" 
+                    <input
+                      type="date"
+                      className="form-input"
                       required
                       value={visitFormData.date}
                       onChange={(e) => setVisitFormData({ ...visitFormData, date: e.target.value })}
@@ -1116,11 +1116,11 @@ function App() {
                     <div style={{ display: 'flex', gap: '12px' }}>
                       {['Morning', 'Afternoon', 'Evening'].map(slot => (
                         <label key={slot} style={{ display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', cursor: 'pointer', flex: 1, padding: '8px', border: '1px solid var(--border-glass)', borderRadius: '6px', background: 'rgba(0,0,0,0.02)' }}>
-                          <input 
-                            type="radio" 
-                            name="time_slot" 
-                            checked={visitFormData.timeSlot === slot} 
-                            onChange={() => setVisitFormData({ ...visitFormData, timeSlot: slot })} 
+                          <input
+                            type="radio"
+                            name="time_slot"
+                            checked={visitFormData.timeSlot === slot}
+                            onChange={() => setVisitFormData({ ...visitFormData, timeSlot: slot })}
                           />
                           {slot}
                         </label>
@@ -1134,10 +1134,10 @@ function App() {
                       <span style={{ fontSize: '11px', color: 'var(--text-secondary)' }}>Get pick-and-drop assistance from your location.</span>
                     </div>
                     <label style={{ display: 'flex', alignItems: 'center', gap: '8px', cursor: 'pointer' }}>
-                      <input 
-                        type="checkbox" 
-                        checked={visitFormData.transport} 
-                        onChange={(e) => setVisitFormData({ ...visitFormData, transport: e.target.checked })} 
+                      <input
+                        type="checkbox"
+                        checked={visitFormData.transport}
+                        onChange={(e) => setVisitFormData({ ...visitFormData, transport: e.target.checked })}
                       />
                       <span style={{ fontSize: '13px', fontWeight: 'bold' }}>YES</span>
                     </label>
