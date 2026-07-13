@@ -401,17 +401,105 @@ function App() {
 
         {/* Banner Section */}
         {activeTab === 'search' && (
-          <div className="glass-panel" style={{ padding: '36px', marginBottom: '30px', textAlign: 'center', background: '#f1f5f9', border: '1px solid #cbd5e1' }}>
-            <h1 style={{ fontSize: '42px', margin: '0 0 10px 0', background: 'var(--gold-gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              Find Your Dream Home
-            </h1>
-            <p style={{ color: 'var(--text-secondary)', maxWidth: '700px', margin: '0 auto 20px auto', fontSize: '15px' }}>
-              Explore the exclusive "Altis Homes Originals" built directly by our group alongside hand-picked premium brokerage developments matching highest quality specifications.
-            </p>
-            <div style={{ display: 'flex', justifyContent: 'center' }}>
-              <span className="badge badge-gold" style={{ marginRight: '10px' }}>★ Premium Hand-Crafted Layouts</span>
-              <span className="badge badge-blue">✓ RERA Approved Inventory</span>
+          <div>
+            <div className="hero-banner" style={{ background: 'linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.85)), url("https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1200&q=80")', backgroundSize: 'cover', backgroundPosition: 'center', borderRadius: '16px', padding: '80px 40px', textAlign: 'center', color: '#ffffff', marginBottom: '40px', boxShadow: '0 10px 30px rgba(0,0,0,0.1)' }}>
+              <span className="badge badge-gold" style={{ marginBottom: '16px', border: 'none', background: 'var(--primary)' }}>★ ALTIS HOMES ORIGINALS & CO.</span>
+              <h1 style={{ fontSize: '48px', fontWeight: '800', color: '#ffffff', margin: '0 0 16px 0', fontFamily: 'var(--font-heading)' }}>
+                Discover Premium Living Spaces
+              </h1>
+              <p style={{ color: '#cbd5e1', maxWidth: '750px', margin: '0 auto 32px auto', fontSize: '17px', lineHeight: '1.6' }}>
+                Explore the exclusive Altis Originals built directly by our group alongside hand-picked premium brokerage developments matching the highest global standards.
+              </p>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+                <button className="btn btn-primary" onClick={() => document.getElementById('search-engine').scrollIntoView({ behavior: 'smooth' })}>
+                  🔍 Search Properties
+                </button>
+                <button 
+                  className="btn btn-secondary" 
+                  style={{ background: 'rgba(255,255,255,0.1)', color: '#ffffff', border: '1px solid rgba(255,255,255,0.2)' }} 
+                  onClick={() => {
+                    setVisitSource('Homepage Hero Consultation CTA');
+                    setLeadSubmitSuccess(false);
+                    setVisitModalOpen(true);
+                  }}
+                >
+                  📅 Book Free Consultation
+                </button>
+              </div>
             </div>
+
+            {/* Property Categories Section */}
+            <section style={{ marginBottom: '40px' }}>
+              <h3 style={{ margin: '0 0 20px 0', textTransform: 'uppercase', fontSize: '14px', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Property Categories</h3>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px' }}>
+                {[
+                  { title: 'Luxury Villas', type: 'Villa', icon: '🏡', desc: 'Indulge in spacious, ultra-private villa layouts.' },
+                  { title: 'Premium Apartments', type: 'Apartment', icon: '🏢', desc: 'Modern high-rises with comprehensive amenities.' },
+                  { title: 'Exclusive Plots', type: 'Plot', icon: '⛰️', desc: 'Gated community lands ready for custom builds.' },
+                  { title: 'Commercial Hubs', type: 'Commercial', icon: 'Commercial', desc: 'Modern office blocks and prime retail spaces.' }
+                ].map((cat) => (
+                  <div 
+                    key={cat.title} 
+                    className="glass-panel" 
+                    onClick={() => {
+                      if (cat.type === 'Commercial') {
+                        // Commercial is property_category commercial
+                        setSelectedTypes(['Commercial']);
+                      } else {
+                        setSelectedTypes([cat.type]);
+                      }
+                      document.getElementById('search-engine').scrollIntoView({ behavior: 'smooth' });
+                    }}
+                    style={{ padding: '24px', cursor: 'pointer', textAlign: 'center', transition: 'var(--transition)' }}
+                    onMouseEnter={(e) => e.currentTarget.style.borderColor = 'var(--primary)'}
+                    onMouseLeave={(e) => e.currentTarget.style.borderColor = 'var(--border-glass)'}
+                  >
+                    <span style={{ fontSize: '36px', display: 'block', marginBottom: '12px' }}>{cat.icon}</span>
+                    <h4 style={{ marginBottom: '8px' }}>{cat.title}</h4>
+                    <p style={{ fontSize: '12px', color: 'var(--text-secondary)' }}>{cat.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Featured Projects Section */}
+            {properties.filter(p => p.is_featured || p.is_altis_original).length > 0 && (
+              <section style={{ marginBottom: '50px' }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}>
+                  <h3 style={{ margin: 0, textTransform: 'uppercase', fontSize: '14px', letterSpacing: '0.1em', color: 'var(--text-muted)' }}>Featured Projects</h3>
+                  <span style={{ fontSize: '12px', color: 'var(--primary)', fontWeight: 'bold' }}>Altis Originals & Hand-Picked Hand-Crafts</span>
+                </div>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+                  {properties.filter(p => p.is_featured || p.is_altis_original).slice(0, 3).map(property => {
+                    const isOriginal = property.is_altis_original;
+                    return (
+                      <div 
+                        key={property.id} 
+                        className="glass-panel" 
+                        style={{ overflow: 'hidden', display: 'flex', flexDirection: 'column', border: isOriginal ? '2px solid var(--primary)' : '1px solid var(--border-glass)' }}
+                      >
+                        <div style={{ height: '180px', position: 'relative', overflow: 'hidden' }}>
+                          <img src={property.media_assets_vault?.hero_slider_webp_urls?.[0]} alt={property.project_name} style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+                          <div style={{ position: 'absolute', bottom: '12px', left: '12px' }}>
+                            <span className="badge badge-gold">{isOriginal ? '★ Altis Original' : '★ Featured'}</span>
+                          </div>
+                        </div>
+                        <div style={{ padding: '16px', flex: 1, display: 'flex', flexDirection: 'column' }}>
+                          <h4 style={{ fontSize: '16px', marginBottom: '6px' }}>{property.project_name}</h4>
+                          <p style={{ fontSize: '12px', color: 'var(--text-secondary)', marginBottom: '12px' }}>📍 {property.location_metadata?.micro_market_zone}, {property.location_metadata?.city_hub}</p>
+                          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginTop: 'auto' }}>
+                            <span style={{ color: 'var(--primary)', fontWeight: '700', fontSize: '14px' }}>{property.pricing?.display_formatted_price.replace(' Onwards', '')}</span>
+                            <button className="btn btn-secondary" style={{ padding: '4px 10px', fontSize: '11px' }} onClick={() => handleViewDetails(property)}>
+                              Details
+                            </button>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
           </div>
         )}
 
@@ -419,7 +507,7 @@ function App() {
         {activeTab === 'search' && (
           <div>
             {/* Search and Advanced Filters Dashboard */}
-            <div className="glass-panel" style={{ padding: '24px', marginBottom: '30px' }}>
+            <div id="search-engine" className="glass-panel" style={{ padding: '24px', marginBottom: '30px' }}>
               <h3 style={{ margin: '0 0 16px 0', color: 'var(--primary)', display: 'flex', alignItems: 'center', gap: '8px' }}>
                 <SearchIcon /> Dynamic Search Engine
               </h3>
@@ -746,6 +834,138 @@ function App() {
                 );
               })}
             </div>
+
+            {/* Why Choose Us */}
+            <section style={{ margin: '60px 0 50px 0' }}>
+              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <h2 style={{ fontSize: '32px', marginBottom: '8px' }}>Why Choose Altis Homes?</h2>
+                <p style={{ color: 'var(--text-secondary)', maxWidth: '600px', margin: '0 auto' }}>Building premium communities and providing a transparent real estate buying process.</p>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '30px' }}>
+                {[
+                  { title: 'RERA Verified Listings', desc: 'Every property on our portal matches 100% verified legal RERA guidelines to secure your investment.', icon: '🛡️' },
+                  { title: 'Interactive VR Walkthroughs', desc: 'Tour spaces in 3D using Matterport walkthroughs and watch HD media before scheduling site visits.', icon: '👓' },
+                  { title: 'Zero Brokerage on Originals', desc: 'Get direct manufacturer pricing and customized payment benefits with zero broker commissions.', icon: '💰' },
+                  { title: 'Dedicated Relationship Manager', desc: 'Single point of contact for loan processing, legal checkups, and final custom interior configurations.', icon: '🤝' }
+                ].map((item, index) => (
+                  <div key={index} className="glass-panel" style={{ padding: '30px', textAlign: 'center' }}>
+                    <span style={{ fontSize: '40px', display: 'block', marginBottom: '16px' }}>{item.icon}</span>
+                    <h4 style={{ marginBottom: '12px', fontSize: '18px' }}>{item.title}</h4>
+                    <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: '1.6' }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Our Services */}
+            <section style={{ marginBottom: '60px', background: '#f1f5f9', padding: '50px 30px', borderRadius: '16px', border: '1px solid #e2e8f0' }}>
+              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <h2 style={{ fontSize: '30px', marginBottom: '8px' }}>Comprehensive Services</h2>
+                <p style={{ color: 'var(--text-secondary)' }}>From matching layouts to key handover, we guide you at every step.</p>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+                {[
+                  { title: 'Property Matchmaking', desc: 'Our algorithms match carpet space, zones, and budget parameters to deliver your ideal listing matches.', icon: '🎯' },
+                  { title: 'Site Inspection Tours', desc: 'Chauffeured transport service and guided walkovers with professional site engineers.', icon: '🚗' },
+                  { title: 'Home Loan Facilitation', desc: 'Direct partnerships with leading PSU and private banks to lock in lowest market interest rates.', icon: '💳' },
+                  { title: 'Interior & Handover Customizations', desc: 'Collaborate with top decorators to hand-craft modular kitchens, lighting, and cabinetry.', icon: '📐' }
+                ].map((service, index) => (
+                  <div key={index} style={{ background: '#ffffff', padding: '24px', borderRadius: '12px', border: '1px solid #e2e8f0' }}>
+                    <span style={{ fontSize: '28px', display: 'block', marginBottom: '12px' }}>{service.icon}</span>
+                    <h4 style={{ marginBottom: '8px', fontSize: '16px' }}>{service.title}</h4>
+                    <p style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>{service.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Customer Journey */}
+            <section style={{ marginBottom: '60px' }}>
+              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <h2 style={{ fontSize: '30px', marginBottom: '8px' }}>The Customer Journey</h2>
+                <p style={{ color: 'var(--text-secondary)' }}>Four steps to securing your dream home with zero stress.</p>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: '20px', position: 'relative' }}>
+                {[
+                  { step: '01', title: 'Discover & Compare', desc: 'Filter, compare parameters, and view layout blueprints from the listings.' },
+                  { step: '02', title: 'Interactive Tour', desc: 'Play walkthrough videos and explore the spaces from the comfort of your couch.' },
+                  { step: '03', title: 'Guided Site Visit', desc: 'Schedule a visit; we provide fully chauffeured transport and site access.' },
+                  { step: '04', title: 'Hassle-Free Possession', desc: 'Sign secure bank-approved titles and customize configurations for key handover.' }
+                ].map((item, index) => (
+                  <div key={index} className="glass-panel" style={{ padding: '24px', position: 'relative', overflow: 'hidden' }}>
+                    <span style={{ position: 'absolute', top: '10px', right: '15px', fontSize: '48px', fontWeight: '900', color: 'rgba(220, 38, 38, 0.05)', userSelect: 'none' }}>{item.step}</span>
+                    <h4 style={{ marginBottom: '8px', color: 'var(--primary)' }}>{item.title}</h4>
+                    <p style={{ fontSize: '12px', color: 'var(--text-secondary)', lineHeight: '1.5' }}>{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Testimonials */}
+            <section style={{ marginBottom: '60px' }}>
+              <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+                <h2 style={{ fontSize: '30px', marginBottom: '8px' }}>Trusted By Homebuyers</h2>
+                <p style={{ color: 'var(--text-secondary)' }}>Read stories from families who found their perfect community with Altis.</p>
+              </div>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+                {[
+                  { name: 'Rohan Sharma', role: 'Originals Owner', quote: 'Buying an Altis Original was incredibly transparent. The virtual tour matched the layout exactly, and the relationship manager handled bank paperwork flawlessly.', rating: 5 },
+                  { name: 'Anjali Sen', role: 'Villas Homebuyer', quote: 'The interactive blueprint tools and detailed pricing sheets were key. I could verify exactly what I was purchasing before scheduling a visit.', rating: 5 },
+                  { name: 'Vikram Malhotra', role: 'Commercial Client', quote: 'We bought retail spaces in Corporate Plaza. The transaction was clean, direct, and the developer logos and builder ratings match up to specs.', rating: 5 }
+                ].map((t, idx) => (
+                  <div key={idx} className="glass-panel" style={{ padding: '24px' }}>
+                    <div style={{ color: '#fbbf24', fontSize: '18px', marginBottom: '12px' }}>{'★'.repeat(t.rating)}</div>
+                    <p style={{ fontSize: '13px', fontStyle: 'italic', color: 'var(--text-secondary)', marginBottom: '16px', lineHeight: '1.6' }}>"{t.quote}"</p>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                      <div style={{ width: '36px', height: '36px', borderRadius: '50%', background: 'var(--primary)', color: 'white', display: 'flex', alignItems: 'center', justifyContent: 'center', fontWeight: 'bold', fontSize: '14px' }}>{t.name[0]}</div>
+                      <div>
+                        <h5 style={{ margin: 0, fontSize: '14px' }}>{t.name}</h5>
+                        <span style={{ fontSize: '11px', color: 'var(--text-muted)' }}>{t.role}</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Developer Partner Logos */}
+            <section style={{ marginBottom: '60px', textAlign: 'center' }}>
+              <h3 style={{ textTransform: 'uppercase', fontSize: '12px', letterSpacing: '0.1em', color: 'var(--text-muted)', marginBottom: '24px' }}>Our Elite Construction Partners</h3>
+              <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '40px', flexWrap: 'wrap', opacity: 0.65 }}>
+                {['Acme Infra', 'Horizon Devs', 'Green Land Group', 'Apex Builders', 'Shanti Construction'].map((brand, idx) => (
+                  <span key={idx} style={{ fontFamily: 'var(--font-heading)', fontSize: '20px', fontWeight: '800', color: '#64748b' }}>
+                    🏗️ {brand}
+                  </span>
+                ))}
+              </div>
+            </section>
+
+            {/* Final CTA Cluster */}
+            <section className="glass-panel" style={{ background: 'linear-gradient(135deg, #1e293b 0%, #0f172a 100%)', color: 'white', padding: '50px 40px', borderRadius: '16px', textAlign: 'center', marginBottom: '40px' }}>
+              <h2 style={{ color: 'white', fontSize: '32px', marginBottom: '12px' }}>Ready to Find Your Space?</h2>
+              <p style={{ color: '#94a3b8', maxWidth: '600px', margin: '0 auto 24px auto', fontSize: '15px' }}>
+                Speak with our real estate engineers today or book a complimentary site walkthrough with private transport.
+              </p>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '16px', flexWrap: 'wrap' }}>
+                <a href="tel:+919876543210" className="btn btn-primary" style={{ textDecoration: 'none' }}>
+                  📞 Call Agent Direct
+                </a>
+                <a href="https://wa.me/919876543210" className="btn" style={{ background: '#25d366', color: 'white', border: 'none', textDecoration: 'none' }}>
+                  💬 WhatsApp Inquiries
+                </a>
+                <button 
+                  className="btn btn-secondary" 
+                  style={{ background: 'rgba(255,255,255,0.1)', color: 'white', borderColor: 'rgba(255,255,255,0.2)' }}
+                  onClick={() => {
+                    setVisitSource('Homepage Footer CTA');
+                    setLeadSubmitSuccess(false);
+                    setVisitModalOpen(true);
+                  }}
+                >
+                  📅 Book Consultation
+                </button>
+              </div>
+            </section>
           </div>
         )}
 
